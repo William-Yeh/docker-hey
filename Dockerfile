@@ -11,8 +11,8 @@
 # builder env
 #
 
-FROM golang:1.12.5 AS builder
-LABEL author="william.pjyeh@gmail.com"
+FROM golang:1.16.6 AS builder
+LABEL authors="william.pjyeh@gmail.com,nrshrivatsan@outlook.com"
 
 RUN git clone https://github.com/rakyll/hey.git
 
@@ -24,8 +24,8 @@ RUN GOOS=linux   GOARCH=amd64  CGO_ENABLED=0 \
 # deployment env
 #
 
-FROM alpine:3.10.0
-LABEL author="william.pjyeh@gmail.com"
+FROM alpine:3.14.0
+LABEL authors="william.pjyeh@gmail.com,nrshrivatsan@outlook.com"
 
 # copy executable
 COPY --from=builder /go/bin/hey  /
